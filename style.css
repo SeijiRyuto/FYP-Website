@@ -1,0 +1,217 @@
+/* ============================================================
+   style.css – Visual design for QR danger awareness page
+   Uses a dark theme with warning colors to emphasize caution
+   ============================================================ */
+
+/* Base reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;          /* dark navy background */
+  color: #eee;
+  line-height: 1.6;
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  background: #16213e;          /* slightly lighter dark card */
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  border: 1px solid #e94560;   /* red accent border */
+}
+
+/* Header styling */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.warning-icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+/* Simple pulsing animation for the warning emoji */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+h1 {
+  color: #e94560;               /* bright danger red */
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Information cards (risk types) */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #0f3460;         /* deeper blue */
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-left: 4px solid #e94560;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #1a1a4e;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #f0a500;               /* warm accent */
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+/* Interactive demo area */
+.demo {
+  background: #0f3460;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  border: 1px dashed #e94560;
+}
+
+.demo h2 {
+  color: #e94560;
+  margin-bottom: 0.5rem;
+}
+
+.click-hint {
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+/* Fake QR code image (pure CSS pattern) */
+.qr-code {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-bottom: 1rem;
+}
+
+.qr-code:hover {
+  transform: scale(1.05);
+}
+
+.qr-pattern {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(3, 40px);
+  gap: 4px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #333;
+}
+
+/* Generate a checkerboard-like pattern resembling a QR code */
+.qr-pattern span {
+  background: #000;
+}
+
+/* Create a more realistic-looking pattern by using different spans */
+.qr-pattern span:nth-child(odd) {
+  background: #000;
+}
+.qr-pattern span:nth-child(even) {
+  background: #fff;
+  border: 1px solid #ccc;
+}
+/* Override some to mimic finder patterns */
+.qr-pattern span:first-child,
+.qr-pattern span:nth-child(3),
+.qr-pattern span:nth-child(7),
+.qr-pattern span:nth-child(9) {
+  background: #000;
+  border: 2px solid #000;
+}
+
+/* Warning message that appears after clicking the fake QR */
+.warning-msg {
+  margin-top: 1rem;
+  background: #e94560;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+/* Utility class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Stats section */
+.stats {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stats h2 {
+  color: #f0a500;
+  margin-bottom: 0.5rem;
+}
+
+.counter {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e94560;
+  animation: countPulse 1s infinite;
+}
+
+/* Small pulse for the counter (optional) */
+@keyframes countPulse {
+  0% { text-shadow: 0 0 5px #e94560; }
+  50% { text-shadow: 0 0 20px #e94560; }
+  100% { text-shadow: 0 0 5px #e94560; }
+}
+
+.note {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
