@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dangers of Scanning Random QR Codes</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main container for centering content -->
+  <main class="container">
+    <header>
+      <!-- Hero warning icon (using emoji for simplicity) -->
+      <div class="warning-icon">⚠️</div>
+      <h1>Think Before You Scan</h1>
+      <p class="subtitle">QR codes on the street can lead to phishing, malware, and more.</p>
+    </header>
+
+    <section class="info-cards">
+      <!-- Risk card 1 -->
+      <article class="card">
+        <h2>🎣 Phishing Attacks</h2>
+        <p>Fake QR codes can direct you to counterfeit login pages that steal your credentials.</p>
+      </article>
+
+      <!-- Risk card 2 -->
+      <article class="card">
+        <h2>🦠 Malware Downloads</h2>
+        <p>Scanning can automatically download harmful software, giving attackers access to your device.</p>
+      </article>
+
+      <!-- Risk card 3 -->
+      <article class="card">
+        <h2>📍 Location Tracking</h2>
+        <p>Some malicious codes trigger silent location requests, revealing where you live or work.</p>
+      </article>
+    </section>
+
+    <!-- Interactive demo: fake QR code that triggers a warning -->
+    <section class="demo">
+      <h2>Try “Scanning” a Dangerous Code</h2>
+      <p class="click-hint">Click the QR code below to see what might happen in a real attack.</p>
+      <div id="fake-qr" class="qr-code" title="Click to see the danger!">
+        <!-- Fake QR pattern (pure CSS) – clicking triggers JS alert -->
+        <div class="qr-pattern">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <!-- Dynamic warning message (hidden by default) -->
+      <div id="warning-message" class="warning-msg hidden">
+        <p><strong>🚨 This could have been a phishing site!</strong></p>
+        <p>Always verify the source before scanning.</p>
+      </div>
+    </section>
+
+    <!-- Real-time incident counter (animated with JS) -->
+    <section class="stats">
+      <h2>Reported QR Scams Today</h2>
+      <p id="scam-counter" class="counter">1,247</p>
+      <p class="note">*Simulated data – real numbers are far higher.</p>
+    </section>
+
+    <footer>
+      <p>Stay safe. When in doubt, don’t scan.</p>
+    </footer>
+  </main>
+
+  <!-- Link to the external JavaScript file (placed before closing body for performance) -->
+  <script src="script.js"></script>
+</body>
+</html>
