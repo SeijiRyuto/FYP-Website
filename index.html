@@ -208,7 +208,7 @@
             line-height: 1;
             animation: skullPulse 1.2s ease-in-out infinite;
             display: none;
-            /* hidden by default, shown via JS */;
+            /* hidden by default, shown via JS */
         }
 
         @keyframes skullPulse {
@@ -560,77 +560,87 @@
          * - Animates a live scam counter (simulated)
          * All actions are purely educational and client-side.
          */
-
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ---------- FAKE QR CODE → WARNING → SKULL → SEQUENCE ----------
+            // ---------- DOM refs ----------
             const qrElement = document.getElementById('fake-qr');
             const warningBox = document.getElementById('warning-message');
             const skullDisplay = document.getElementById('skull-display');
             const dangerSeq = document.getElementById('danger-sequence');
             const qrStage = document.getElementById('qr-stage');
+            const counterElement = document.getElementById('scam-counter');
 
-            // State to prevent re-triggering while animation is running
+            // ---------- state ----------
             let isAnimating = false;
 
+            // ---------- FAKE QR CODE → WARNING → SKULL → SEQUENCE ----------
             if (qrElement && warningBox && skullDisplay && dangerSeq) {
-                qrElement.addEventListener('click', () => {
+
+                qrElement.addEventListener('click', function onClick() {
                     // Prevent multiple rapid clicks
                     if (isAnimating) return;
                     isAnimating = true;
 
-                    // ---- Step 1: Show warning message ----
+                    // ---- Step 1: show warning message ----
                     warningBox.classList.remove('hidden');
 
-                    // ---- Step 2: Alert (educational) ----
+                    // ---- Step 2: educational alert ----
                     alert('⚠️ In a real attack, this could have sent you to a fake banking site!');
 
-                    // ---- Step 3: After 1s, hide QR and show skull ----
+                    // ---- Step 3: after 600ms, fade QR and reveal skull & sequence ----
                     setTimeout(() => {
-                        // Fade out QR
+
+                        // 3a. fade out the QR code
+                        qrElement.style.transition = 'opacity 0.4s ease';
                         qrElement.style.opacity = '0';
-                        // After fade, hide QR and show skull
+
+                        // 3b. after QR fades (400ms), hide QR, show skull
                         setTimeout(() => {
                             qrElement.style.display = 'none';
                             skullDisplay.style.display = 'block';
-                            // trigger reflow for animation
+                            // force reflow so the skull animation kicks in
                             void skullDisplay.offsetWidth;
+
+                            // 3c. after a moment (200ms), reveal the danger sequence
+                            setTimeout(() => {
+                                dangerSeq.style.display = 'block';
+                                // force reflow so the fadeSlideUp animation runs
+                                void dangerSeq.offsetWidth;
+                                // scroll it into view so the user sees it
+                                dangerSeq.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }, 200);
+
                         }, 400);
 
-                        // ---- Step 4: After 1.2s more, show danger sequence ----
-                        setTimeout(() => {
-                            dangerSeq.style.display = 'block';
-                            // scroll into view for visibility
-                            dangerSeq.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 1200);
-
-                        // ---- Step 5: After 6s, auto-hide warning (cleanup) ----
+                        // ---- Step 4: auto-hide the warning after 6s ----
                         setTimeout(() => {
                             warningBox.classList.add('hidden');
-                        }, 5000);
+                        }, 6000);
 
-                        // ---- Step 6: Reset the animation after 10s (so user can try again) ----
+                        // ---- Step 5: reset everything after 12s so the user can try again ----
                         setTimeout(() => {
-                            // Reset: show QR, hide skull & sequence, hide warning
+                            // restore QR
                             qrElement.style.display = 'inline-block';
                             qrElement.style.opacity = '1';
+                            qrElement.style.transition = '';
+                            // hide skull and sequence
                             skullDisplay.style.display = 'none';
                             dangerSeq.style.display = 'none';
+                            // hide warning just in case
                             warningBox.classList.add('hidden');
+                            // unlock
                             isAnimating = false;
-                            // Scroll back to the QR area
+                            // scroll back to the QR area
                             qrStage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 10000);
+                        }, 12000);
 
-                    }, 800); // wait 800ms after click before starting transformation
+                    }, 600); // initial delay before fading
                 });
             }
 
             // ---------- ANIMATED SCAM COUNTER ----------
-            const counterElement = document.getElementById('scam-counter');
             if (counterElement) {
                 let currentCount = 1247;
-
                 setInterval(() => {
                     const increase = Math.floor(Math.random() * 5) + 1;
                     currentCount += increase;
@@ -643,12 +653,11 @@
                 'font-size: 18px; color: #e94560; font-weight: bold;');
             console.log('%cThis page is an educational demo.',
                 'font-size: 14px; color: #f0a500;');
-
-            // ---------- BITLY LINK PLACEHOLDER REMINDER (in console) ----------
             console.log('%c🔗 Remember to replace the Bitly links in the HTML!',
                 'font-size: 13px; color: #f0a500;');
             console.log('%c   Look for "BITLY LINK" comments in the HTML.',
                 'font-size: 13px; color: #aaa;');
+
         });
     </script>
 </body>
