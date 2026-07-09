@@ -150,34 +150,15 @@ h1 {
     transform: scale(1.05);
 }
 
-.qr-pattern {
-    display: grid;
-    grid-template-columns: repeat(3, 40px);
-    grid-template-rows: repeat(3, 40px);
-    gap: 4px;
-    background: white;
-    padding: 8px;
-    border-radius: 8px;
+.qr-image {
+    width: 120px;          /* adjust to your liking */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;    /* optional */
     border: 2px solid #333;
-}
-
-.qr-pattern span {
-    background: #000;
-}
-
-.qr-pattern span:nth-child(odd) {
-    background: #000;
-}
-.qr-pattern span:nth-child(even) {
-    background: #fff;
-    border: 1px solid #ccc;
-}
-.qr-pattern span:first-child,
-.qr-pattern span:nth-child(3),
-.qr-pattern span:nth-child(7),
-.qr-pattern span:nth-child(9) {
-    background: #000;
-    border: 2px solid #000;
+    background: white;     /* gives it a white background like a sticker */
+    padding: 4px;
 }
 
 .skull-display {
