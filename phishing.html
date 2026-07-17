@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QR Phishing – How It Works</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Responsive video wrapper – keeps 16:9 aspect ratio */
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            border-radius: 8px;
+        }
+
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
     <main class="container">
@@ -26,7 +47,7 @@
             <a href="index.html" class="back-link">← Back to Home</a>
         </section>
 
-        <!-- Two empty placeholder sections for your own links -->
+        <!-- Two placeholder sections for your own links -->
         <section class="extra-links">
             <div class="placeholder-box">
                 <p>📖 <strong>More Information</strong></p>
@@ -35,8 +56,15 @@
             </div>
             <div class="placeholder-box">
                 <p>▶️ <strong>YouTube Video</strong></p>
-                <div class="youtube-placeholder">(Embed your video here)</div>
-                <!-- Example: <iframe width="200" height="113" src="..."></iframe> -->
+                <!-- Embedded YouTube video (responsive) -->
+                <div class="video-responsive">
+                    <iframe 
+                        src="https://www.youtube-nocookie.com/embed/O5bn41OcvGQ?rel=0" 
+                        title="YouTube video player - QR Phishing" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </section>
 
